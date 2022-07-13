@@ -1,5 +1,6 @@
 package com.github.hyeyoom.springframework.beans.factory.config;
 
+import com.github.hyeyoom.springframework.beans.factory.support.BeanNameGenerator;
 import com.github.hyeyoom.springframework.stereotype.Lazy;
 
 import java.lang.reflect.Constructor;
@@ -27,8 +28,7 @@ public class BeanDefinitionImpl implements BeanDefinition {
 
     @Override
     public String getBeanName() {
-        final String name = this.originalClass.getSimpleName();
-        return name.substring(0, 1).toLowerCase() + name.substring(1);
+        return BeanNameGenerator.determineBeanNameFromClass(this.originalClass);
     }
 
     @Override
